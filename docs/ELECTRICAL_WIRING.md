@@ -1,59 +1,51 @@
 # IonStar Electrical Wiring Guide
 
-This document details the electrical wiring and connector pinouts necessary to assemble the IonStar drone’s electronic systems.
+This guide details the wiring and electrical assembly of the IonStar drone. Follow all safety precautions when handling electronics.
 
-## 1. Battery Connection
+## 1. Required Tools and Materials
 
-- Use a 4S LiPo battery (14.8V nominal).
-- Connect battery leads to the Power Distribution Board (PDB) input terminals.
-- Ensure correct polarity: Red wire to positive (+), Black wire to negative (-).
-- Use an XT60 connector for secure battery connection.
+- Soldering iron and solder
+- Heat shrink tubing
+- Wire cutters and strippers
+- Multimeter
+- Electrical tape
+- Connectors and cables as specified in parts list
 
-## 2. Power Distribution Board (PDB)
+## 2. Wiring the Power Distribution Board (PDB)
 
-- Battery input feeds the PDB.
-- PDB outputs:
-  - Direct battery voltage to ESCs and motors.
-  - Regulated 5V output (via BEC) for flight controller and peripherals.
-- Wire ESC power leads (usually red and black) to PDB motor outputs.
-- Connect PDB 5V and GND to the flight controller power input pins.
+- Connect the battery input terminals to the PDB battery pads, ensuring correct polarity.
+- Solder power leads securely and cover solder joints with heat shrink tubing.
+- Connect ESC power cables to the PDB output pads as per wiring diagram.
+- Double-check all connections with a multimeter.
 
-## 3. ESC to Motor Wiring
+## 3. Connecting the Electronic Speed Controllers (ESCs)
 
-- Each ESC connects to a single brushless DC motor.
-- Connect the three motor phase wires from the ESC to the motor wires.
-- Secure connections with solder and heat shrink tubing.
-- Ensure ESC signal wires connect to the flight controller’s PWM output pins as per schematic.
+- Solder motor phase wires from each ESC to the respective motor wires (A, B, C).
+- Connect ESC signal wires to the flight controller PWM outputs.
+- Route ESC power and signal cables neatly to minimize interference.
 
 ## 4. Flight Controller Wiring
 
-- **Power:**
-  - Connect flight controller 5V and GND to the PDB regulated output.
-- **ESC Signal Wires:**
-  - Connect four ESC PWM signal wires to flight controller GPIO pins configured for PWM output.
-- **Sensors:**
-  - IMU connected via I2C lines (SDA, SCL) with 4.7kΩ pull-up resistors.
-  - Barometric sensor connected via SPI or I2C as per schematic.
-  - GPS connected via UART pins (RX, TX).
-- **RC Receiver:**
-  - Connect PWM signal lines to flight controller GPIO pins capable of input capture.
+- Connect the flight controller to the PDB power output using supplied cables.
+- Attach ESC signal and ground wires to flight controller PWM input pins.
+- Connect telemetry, GPS, or additional sensors as required.
 
-## 5. Connector Pinouts Summary
+## 5. Sensor Wiring
 
-| Connector        | Pin 1        | Pin 2        | Pin 3         | Notes                    |
-|------------------|--------------|--------------|---------------|--------------------------|
-| Battery (XT60)   | Positive (+) | Negative (-) | N/A           | Ensure correct polarity  |
-| ESC Signal       | PWM Signal   | 5V           | Ground (GND)  | PWM to flight controller |
-| IMU (I2C)        | SDA          | SCL          | GND, VCC      | Pull-ups required        |
-| GPS UART         | RX           | TX           | GND           | Baud rate 9600 default   |
-| RC Receiver PWM  | Signal       | 5V           | Ground (GND)  | Use interrupt pins       |
+- Wire any onboard sensors (e.g., IMU, barometer) according to the sensor datasheets and flight controller inputs.
+- Use shielded cables where necessary to reduce noise.
 
-## 6. Safety and Best Practices
+## 6. Battery and Power Switch
 
-- Double-check all wiring before powering up.
-- Use heat shrink tubing and cable management for durability.
-- Test individual components (motors, ESCs, sensors) separately prior to integration.
-- Always remove propellers when testing electronics to avoid injury.
+- Install the battery connector securely.
+- Add an inline fuse or circuit breaker between battery and PDB for safety.
+- Connect the power switch wiring as per electrical schematic.
+
+## 7. Final Inspection
+
+- Verify all solder joints are clean and insulated.
+- Check for correct polarity on all power connections.
+- Secure wiring bundles with zip ties to prevent movement.
 
 ---
 
