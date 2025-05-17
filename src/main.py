@@ -1,47 +1,54 @@
 """
-IonStar Main Control Program
-Entry point for drone control system.
+IonStar Main Program
+Simulates startup, control loop, and shutdown of the drone system.
 """
 
 import time
-from control.flight_controller import FlightController
-from energy.ambient_harvester import AmbientEnergyHarvester
-from communication.vr_interface import VRInterface
+from src.flight.flight_controller import FlightController
+from src.energy.ambient_harvester import AmbientEnergyHarvester
+from src.communication.vr_interface import VRInterface
 
 def main():
-    print("IonStar control stack initializing...")
+    print("IonStar Drone Simulation Starting...")
 
-    # Initialize subsystems
+    # Initialize components
     flight_controller = FlightController()
     energy_harvester = AmbientEnergyHarvester()
     vr_interface = VRInterface()
 
-    # Power up sequence
+    # Start systems
     energy_harvester.start()
-    flight_controller.initialize()
     vr_interface.connect()
 
+    # Simulate main loop
     try:
-        while True:
-            # Harvest ambient energy
+        flight_controller.take_off()
+        for _ in range(10):  # Simulate 10 control cycles
             energy_harvester.collect()
+            commands = vr_interface.receive_commands()
+            if commands:
+                flight_controller.update_stabilization(
+                    pitch=commands.get('pitch', 0),
+                    roll=commands.get('roll', 0),
+                    yaw=commands.get('yaw', 0)
+                )
+                flight_controller.set_thrusters({'main': commands.get('thrust', 0)})
+                telemetry = {
+                    'pitch': flight_controller.pitch,
+                    'roll': flight_controller.roll,
+                    'yaw': flight_controller.yaw,
+                    'energy': energy_harvester.get_energy()
+                }
+                vr_interface.send_telemetry(telemetry)
+            time.sleep(1)
 
-            # Update flight controls based on VR input
-            vr_commands = vr_interface.receive_commands()
-            flight_controller.update(vr_commands)
-
-            # Send telemetry data to VR interface
-            telemetry = flight_controller.get_telemetry()
-            vr_interface.send_telemetry(telemetry)
-
-            # Loop delay
-            time.sleep(0.02)  # 50 Hz control loop
-
+        flight_controller.land()
     except KeyboardInterrupt:
-        print("Shutting down IonStar control system...")
-        flight_controller.shutdown()
-        energy_harvester.stop()
+        print("Simulation interrupted.")
+    finally:
         vr_interface.disconnect()
+        energy_harvester.stop()
+        print("IonStar Drone Simulation Ended.")
 
 if __name__ == "__main__":
     main()
