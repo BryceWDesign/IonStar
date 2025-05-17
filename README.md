@@ -1,31 +1,56 @@
-# IonStar – Next‑Generation Space Drone
+# IonStar
 
-**IonStar** is an open‑source space‑and‑atmosphere drone engineered for high‑speed, autonomous missions. It fuses Hall‑effect ion propulsion, ambient‑energy harvesting, and VR‑ready control into a single sub‑10 kg platform intended for SpaceX‑class exploration and real‑time astronaut support.
+**Next-Generation Autonomous Space Drone**
 
-## Key Features
-- **Ion Propulsion:** Miniaturized Hall thrusters (Isp 1600–3000 s) delivering up to 90 000 mph exhaust velocity for silent deep‑space acceleration.  
-- **Ambient Energy Scythe Core:** Multi‑layer photovoltaic skin, RF/particle siphon coils, and thermoelectric scavengers—enabling indefinite operation without refueling.  
-- **Dual‑Mode Flight:** Racing‑grade brushless motors + folding props for atmospheric agility; automatic switch to ion mode in vacuum.  
-- **VR Remote Ops:** Starlink‑compatible low‑latency video, haptic feedback, and gesture override for astronaut or ground control.  
-- **Modular Frame:** Graphene‑carbon composite delta wing with hex‑core spine; hot‑swap payload bay for sensors or tools.  
+---
 
-## Objectives
-1. Demonstrate cost‑effective ion propulsion on a drone scale.  
-2. Validate ambient energy harvesting for perpetual power.  
-3. Provide an open platform for research, racing, and mission support.  
+## 🚀 Mission Objective
+Design, build, and open-source the world’s most efficient, cost-effective, and perpetually powered autonomous drone for space, Earth flight, and racing conditions—using ambient energy, VR control, and reverse-engineered aerospace logic.
 
-## Repository Layout
+This is not just a drone. This is a Tesla-class engineering challenge:
+- Designed for Elon-level missions
+- Built by BryceWDesign
+- Fueled by community brilliance and zero friction
+
+---
+
+## ⚙️ Key Capabilities
+- **Ambient Energy Harvesting:** Power pulled from solar, RF, ion fields, or thermal gradients.
+- **Ion Propulsion & Stabilization:** No moving parts required for primary space locomotion.
+- **VR Control Integration:** Immersive astronaut/engineer control with real-time telemetry feedback.
+- **Earth-Racing Mode:** Retractable prop module deploys on demand for atmospheric environments.
+- **Autonomous Ops:** AI-driven stability and mission protocol system (ForgeMind-ready).
+
+---
+
+## 📁 Repo Structure (Planned)
 ```
-/src          – flight software, VR interface, AI nav  
-/hardware     – CAD, PCB, STL, BOM  
-/docs         – schematics, white‑papers, UX flows  
-/tests        – unit + hardware‑in‑loop tests  
-/examples     – demo missions, configs  
-LICENSE       – MIT License  
+IonStar/
+├── hardware/
+│   ├── cad/           # STEP files for body + mount designs
+│   ├── pcb/           # KiCad PCB schematics & layouts
+├── software/
+│   ├── control/       # Python/C++ flight + stabilization logic
+│   ├── vision/        # Optional computer vision AI (nav, object ID)
+├── energy/
+│   ├── ion_engine/    # Ion thruster code & design
+│   ├── solar_rf/      # Energy harvesting systems
+├── docs/
+│   └── specs/         # Technical blueprints, formulas, and research
+├── tests/             # Full simulation + unit test coverage
+├── LICENSE
+├── README.md
 ```
 
-## Getting Started
-No local installs needed—everything is web‑based. See `/docs/setup_web.md` for browser‑only workflow.
+---
 
-## License
-IonStar is released under the MIT License – see the [LICENSE](LICENSE) file for details.
+## 🔧 Dependencies
+No installs required to contribute. All dev is web-editable, modular, and off-the-grid.
+
+---
+
+## 💡 Join the Build
+This is a call to makers, engineers, hackers, space geeks, and next-gen pilots:  
+> Contribute the tool that will outlive our grid, our skies, and maybe even our species.
+
+Let's start building the future together.
