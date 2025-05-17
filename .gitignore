@@ -1,0 +1,69 @@
+# --- General ---
+.DS_Store
+Thumbs.db
+*.log
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.env
+.env/
+
+# --- Virtual environments ---
+.venv/
+venv/
+ENV/
+env/
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+
+# --- C / C++ / Embedded Build ---
+*.o
+*.obj
+*.elf
+*.hex
+*.bin
+*.map
+*.out
+build*/ 
+
+# --- CAD & 3D Models ---
+*.step
+*.stp
+*.iges
+*.igs
+*.bak
+*.tmp
+
+# --- PCB Design ---
+*.brd
+*.sch
+*.lbr
+*.drl
+*.gbr
+
+# --- Firmware Images ---
+firmware/*.bin
+firmware/*.hex
+
+# --- VSCode / IDE settings ---
+.vscode/
+.idea/
+*.swp
+
+# --- Tests & Coverage ---
+htmlcov/
+.coverage
+.cache/
+.pytest_cache/
+
+# --- Misc ---
+*.zip
+*.tar.gz
+*.7z
