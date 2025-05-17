@@ -20,7 +20,7 @@ class FlightController:
                 self.thrusters[key] = thruster_values[key]
 
     def update_stabilization(self):
-        # Simple example: pitch increases by 5 degrees on update
+        # Simple logic to simulate stabilization adjustment
         if self.is_flying:
             self.pitch += 5
 
