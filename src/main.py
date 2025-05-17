@@ -1,54 +1,20 @@
-"""
-IonStar Main Program
-Simulates startup, control loop, and shutdown of the drone system.
-"""
-
-import time
 from src.flight.flight_controller import FlightController
-from src.energy.ambient_harvester import AmbientEnergyHarvester
-from src.communication.vr_interface import VRInterface
 
 def main():
-    print("IonStar Drone Simulation Starting...")
+    controller = FlightController()
+    print("Initial status:", controller.get_status())
 
-    # Initialize components
-    flight_controller = FlightController()
-    energy_harvester = AmbientEnergyHarvester()
-    vr_interface = VRInterface()
+    controller.take_off()
+    print("Status after takeoff:", controller.get_status())
 
-    # Start systems
-    energy_harvester.start()
-    vr_interface.connect()
+    controller.set_thrusters({'main': 75, 'left': 30, 'right': 30, 'rear': 20})
+    print("Thrusters set:", controller.thrusters)
 
-    # Simulate main loop
-    try:
-        flight_controller.take_off()
-        for _ in range(10):  # Simulate 10 control cycles
-            energy_harvester.collect()
-            commands = vr_interface.receive_commands()
-            if commands:
-                flight_controller.update_stabilization(
-                    pitch=commands.get('pitch', 0),
-                    roll=commands.get('roll', 0),
-                    yaw=commands.get('yaw', 0)
-                )
-                flight_controller.set_thrusters({'main': commands.get('thrust', 0)})
-                telemetry = {
-                    'pitch': flight_controller.pitch,
-                    'roll': flight_controller.roll,
-                    'yaw': flight_controller.yaw,
-                    'energy': energy_harvester.get_energy()
-                }
-                vr_interface.send_telemetry(telemetry)
-            time.sleep(1)
+    controller.update_stabilization()
+    print("Pitch after stabilization update:", controller.pitch)
 
-        flight_controller.land()
-    except KeyboardInterrupt:
-        print("Simulation interrupted.")
-    finally:
-        vr_interface.disconnect()
-        energy_harvester.stop()
-        print("IonStar Drone Simulation Ended.")
+    controller.land()
+    print("Status after landing:", controller.get_status())
 
 if __name__ == "__main__":
     main()
