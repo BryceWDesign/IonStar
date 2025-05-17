@@ -1,56 +1,71 @@
-# IonStar
+# 🚀 IonStar – Next‑Generation Space Drone
 
-**Next-Generation Autonomous Space Drone**
+[![CI Status](https://github.com/BryceWDesign/IonStar/actions/workflows/ci.yml/badge.svg)](../../actions)
 
----
-
-## 🚀 Mission Objective
-Design, build, and open-source the world’s most efficient, cost-effective, and perpetually powered autonomous drone for space, Earth flight, and racing conditions—using ambient energy, VR control, and reverse-engineered aerospace logic.
-
-This is not just a drone. This is a Tesla-class engineering challenge:
-- Designed for Elon-level missions
-- Built by BryceWDesign
-- Fueled by community brilliance and zero friction
+IonStar is an open‑source, energy‑autonomous drone purpose‑built for space missions and high‑performance atmospheric flight.  
+Combining **ion propulsion**, **ambient energy harvesting**, and **VR remote control**, IonStar aims to out‑pace and out‑last conventional spacecraft while remaining lightweight and low‑cost.
 
 ---
 
-## ⚙️ Key Capabilities
-- **Ambient Energy Harvesting:** Power pulled from solar, RF, ion fields, or thermal gradients.
-- **Ion Propulsion & Stabilization:** No moving parts required for primary space locomotion.
-- **VR Control Integration:** Immersive astronaut/engineer control with real-time telemetry feedback.
-- **Earth-Racing Mode:** Retractable prop module deploys on demand for atmospheric environments.
-- **Autonomous Ops:** AI-driven stability and mission protocol system (ForgeMind-ready).
+## ✨ Key Capabilities
+| Feature | Highlights |
+|---------|------------|
+| **Dual‑Mode Flight** | Racing‑grade brushless fans for atmosphere; Hall‑effect ion thrusters for vacuum. |
+| **Ambient Energy Scythe Core** | Triboelectric mesh + radiant absorber + graphene supercaps → perpetual power. |
+| **VR Ops** | Low‑latency stereo video, haptics, and full headset control for astronauts or ground crews. |
+| **Modular Frame** | Carbon‑fiber delta shell with swappable payload bay (< 2.5 kg target mass). |
+| **Open & Hackable** | MIT‑licensed code, CAD, and PCB files—perfect for research, racing, or off‑world utility bots. |
 
 ---
 
-## 📁 Repo Structure (Planned)
-```
+## 📂 Repository Layout
 IonStar/
+├── src/ # Control, energy, comm modules
 ├── hardware/
-│   ├── cad/           # STEP files for body + mount designs
-│   ├── pcb/           # KiCad PCB schematics & layouts
-├── software/
-│   ├── control/       # Python/C++ flight + stabilization logic
-│   ├── vision/        # Optional computer vision AI (nav, object ID)
-├── energy/
-│   ├── ion_engine/    # Ion thruster code & design
-│   ├── solar_rf/      # Energy harvesting systems
+│ ├── bom.csv # Parts & pricing
+│ ├── assembly_guide.md # Step‑by‑step build
+│ └── schematics/ # Wiring & PCB docs
 ├── docs/
-│   └── specs/         # Technical blueprints, formulas, and research
-├── tests/             # Full simulation + unit test coverage
+│ ├── build_software.md # Dev setup & test guide
+│ ├── build_hardware.md # Full hardware build HOW‑TO
+│ ├── power_system.md # Ambient energy theory & design
+│ ├── vr_control.md # VR control system overview
+│ └── parts_costs.md # Professional parts list
+├── tests/ # Unit & HIL tests
+├── .github/workflows/ci.yml
 ├── LICENSE
-├── README.md
-```
+└── README.md
 
 ---
 
-## 🔧 Dependencies
-No installs required to contribute. All dev is web-editable, modular, and off-the-grid.
+## 🛠️ Quick Start
 
----
+### Software Simulation
+```bash
+git clone https://github.com/BryceWDesign/IonStar.git
+cd IonStar
+python src/main.py
+Runs a 10‑cycle demo loop printing energy harvest, VR commands, and telemetry.
 
-## 💡 Join the Build
-This is a call to makers, engineers, hackers, space geeks, and next-gen pilots:  
-> Contribute the tool that will outlive our grid, our skies, and maybe even our species.
+Browser‑Only Contribution
+Press . on any repo page to open github.dev.
 
-Let's start building the future together.
+Follow docs/build_software.md for details.
+
+Submit pull requests—CI tests run automatically.
+
+🧩 Build It IRL
+Review hardware/bom.csv and docs/parts_costs.md for sourcing.
+
+Follow hardware/assembly_guide.md step by step.
+
+Flash the control stack (src/) onto the Pixhawk (or your MCU).
+
+Strap in, power up, and go orbital 🛰️.
+
+🤝 Contributing
+We welcome PRs, issues, and ambitious forks—see CONTRIBUTING.md and CODE_OF_CONDUCT.md for guidelines.
+📜 License
+Released under the MIT License – use it, hack it, fly it, improve it.
+
+IonStar: built for the stars, by the community.
